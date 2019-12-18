@@ -24,5 +24,6 @@ The final system will be deployed onto kubernetes, so it's a chance for me to le
 I like to experiment and learn different languages; usually superficially. I find it interesting to learn a wide range of languages before deciding upon one that interests me enough for a deep dive. This architecture will let me write consumers in a range of different languages going forward and learn their IO models.
 
 
+
 ## tldr
 In mid 2016 I had to decided to take some time off between contracts. I wanted to skill up in Rust and Haskell. I was tired of programming with languages that didn't want to 
