@@ -3,9 +3,9 @@
 
 This is a pet project that scratches a few itches. After a very busy time in my life, I'm lucky enough to be enjoying a few months off. I spent November playing computer games. Now it's time for a bit of coding. 
 
-Essentially, it's a message passing architecture that allows me to play with different languages and kubernetes settings. JSON events are passed into a system, enqueued, them consumed upstream, wrapped in envelopes and interred in a database.
+Essentially, it's a message passing architecture that allows me to play with different languages and kubernetes settings. JSON events are passed into a system, assigned a unique ID, enqueued, them consumed upstream. Consumers wrap the events in envelopes, adding a field to identify which consumer service created the envelope, then interred in a database.
 
-The envelopes will identify which consumer persisted the event, for example 'Golang Consumer', 'Rust Consumer'. At the end of a run, I'll then be able to do a very primitive comparison about the IO throughput abilities of different languages. It is not meant as a benchmark, by any means, just some fun. 
+At the end of a run, I'll then be able to do a very primitive comparison about the IO throughput abilities of different languages by creating consumers in different languages. It is not meant as a benchmark, by any means, just some fun solving a basic problem and exposing IO techniques in various languages. 
 
 Specific itches to scratch.
 
