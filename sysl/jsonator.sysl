@@ -1,7 +1,6 @@
 Sink:
-    Receive: 
+    Receive( data <: Sink.Data ): 
         "Accept a string, verify it is JSON, call CreateID."
-        Push <- CreateID
 
     CreateID: ...
     Push: ...
