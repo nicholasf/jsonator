@@ -33,9 +33,26 @@ Queue:
         For each subscriber in subscribers:
             Consumer <- Receive
 
-    Subscribe: ...
+    Subscribe(Queue.Subscriber): 
+        push subscriber onto Subscribers
+
 
 Consumer: 
-    Receive(Sink.Data): ...
-    Wrap: ...
-    Write: ...
+    !type Data:
+        data <: Sink.data
+        consumer <: string
+
+    Receive(Sink.Data): 
+        create a consumerData
+        DB <- Write
+
+DB:
+    Write(Consumer.Data):
+        writes the consumerData into a table or collection
+
+Project [appfmt="%(appname)"]:
+    _:
+        Sink
+        Queue
+        Consumer
+        DB
