@@ -1,18 +1,41 @@
 Sink:
-    Receive( data <: Sink.Data ): 
-        "Accept a string, verify it is JSON, call CreateID."
-
-    CreateID: ...
-    Push: ...
     !type Data:
-        json <: string
+        json <: string?
+        transactionId <: string?
+    
+    !type ErrorResponse:
+        status <: string?
+    
+    !type SuccessResponse:
+        status <: string?
+        transactionId <: string?
+
+    Receive( data <: string ): 
+        "Accept a string, verify it is JSON, call CreateID."
+        if data is not valid JSON:
+            return 400 <: ErrorResponse
+        else: 
+            call CreateId internally to generate unique transactionId
+            return 200, transactionId <: SuccessResponse
+            create data
+
+        Queue <- Enqueue
+
 
 Queue: 
-    Enqueue: ...
-    Publish: ...
-    AcceptSubscriber: ...
+    !type Subscriber:
+        endpoint <: string
+
+    !alias Subscribers:
+        sequence of Subscriber
+
+    Enqueue(Sink.Data): 
+        For each subscriber in subscribers:
+            Consumer <- Receive
+
+    Subscribe: ...
 
 Consumer: 
-    Receive: ...
+    Receive(Sink.Data): ...
     Wrap: ...
     Write: ...
