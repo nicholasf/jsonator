@@ -6,7 +6,7 @@ Out of interest I used a system definition language called Sysl (https://github.
 
 points:
 
-* I couldnt work out how to depict internal calls in a service.
+* I couldnt work out how to depict internal calls in a service. I guess this tool wants to depict service to service dependencies.
 * There seems to be a lot of depth in the pet shop syntax example, I just took a simple and quick approach to get started.
 * diagram generation just worked.
 * feels like a nice way to rapidly build 
@@ -24,3 +24,4 @@ sysl ints -o integration.png --project Project sysl/jsonator.sysl
 
 The Data Model
 
+I ran into a bug with this, had to open a ticket.
